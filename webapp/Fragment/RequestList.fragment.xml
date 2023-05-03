@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <SearchField placeholder="{i18n>SearchPlaceholder}" class="sbuxSearch" />
+  <List id="idProductList" items="{path:'/Items',	  
+                  filters: [{ path: 'HeaderID_HeaderID', operator : 'EQ', value1 : 1000050}, {path: 'ThawTime', operator: 'EQ', value1: 300, and: 'true'}],
+                   sorter: [{
+                      path: 'DeptSubClass',
+                      descending: false,
+                      group: true}]}" class="sbuxListProduct" selectionChange="onSelectListItem" mode="SingleSelectMaster" updateFinished="onUpdateFinishList">
+    <CustomListItem press="onSelectListItem" class="sapUiSmallMarginTopBottom">
+      <HBox height="5rem">
+        <HBox class="sbuxHBoxBackground" width="5rem">
+          <Image height="3rem" src="./Image/Bacon.png" class="sbuxHBoxBackground"/>
+        </HBox>
+        <VBox width="100%">
+          <HBox class="sapUiTinyMarginBegin" alignItems="Start" justifyContent="SpaceBetween">
+            <Text text="{Description}" class=""/>
+            <Text text="{DeptSubClass}" visible="false"/>
+            <Text text="{ActualPullQty}" visible="false"/>
+            <HBox>
+              <Text text="{parts:[{path:'BOHQty',targetType : 'any'},{path:'FOHQty',targetType : 'any'},{path:'Carryover',targetType : 'any'}],formatter: '.formatter.getCarryOverQnt'}" class="sbuxTextPull sapUiMediumMarginEnd" visible="{parts:[{path:'BOHQty',targetType : 'any'},{path:'FOHQty',targetType : 'any'}],formatter: '.formatter.getStartButtonVisibility'}"/>
+              <Text text="{parts:[{path:'ClacPull',targetType : 'any'},{path:'Carryover',targetType : 'any'},{path:'ActualPullQty',targetType : 'any'},{path:'ItemNo',targetType : 'any'}],formatter: '.formatter.getPullQty'}" class="sbuxTextPull sapUiMediumMarginEnd" visible="{parts:[{path:'Carryover',targetType : 'any'},{path:'FOHQty',targetType : 'any'}],formatter: '.formatter.getPullButton'}"/>
+            </HBox>
+          </HBox>
+          <HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop" alignItems="Start" justifyContent="SpaceBetween">
+            <HBox>
+              <Text text="BoH {path: 'BOHQty',formatter: '.formatter.getProductQuantity'}" class="sbuxTextsbuxColor sapUiTinyMarginTop sapUiTinyMarginBegin"  visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getIconVisibility'}"/>
+              <Text text="/" class="sbuxTextsbuxColor sapUiTinyMarginTop sapUiTinyMarginBegin"  visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getIconVisibility'}"/>
+              <Text text="{i18n>FoH} {path: 'FOHQty',formatter: '.formatter.getProductQuantity'}" class="sbuxTextsbuxColor sapUiTinyMarginTop sapUiTinyMarginBegin"  visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getIconVisibility'}"/>
+            </HBox>
+            <Button icon="sap-icon://accept" type="Accept" visible="{parts:[{path:'BOHQty',targetType : 'any'},{path:'FOHQty',targetType : 'any'}],formatter: '.formatter.getStartButtonVisibility'}" class="sbuxButtonAccept1 sbuxCheckButton sapUiMediumMarginEnd" press="onPressStart" />
+            <Button text="{parts:[{path:'ActualPullQty',targetType : 'any'}],formatter: '.formatter.getPullButtonText'}" type="Accept" class="sbuxButtonAccept1 sbuxCheckButton sapUiMediumMarginEnd" press="onPressPull" visible="{parts:[{path:'Carryover',targetType : 'any'},{path:'FOHQty',targetType : 'any'}],formatter: '.formatter.getPullButton'}"/>
+
+          </HBox>
+        </VBox>
+      </HBox>
+    </CustomListItem>
+  </List>
+
+</core:FragmentDefinition>

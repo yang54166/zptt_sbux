@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<OverflowToolbar>
+
+		<Button icon="sap-icon://nav-back" text="{i18n>Exit}" class="sbuxNavbackButton" press="onPressExit" />
+		<ToolbarSpacer />
+		<Title text="{ApplicationModel>/RequestTile} {i18n>RequestTile}"/>
+		<ToolbarSpacer />
+		<!-- <Button text="Reset" press="resetStore"/> -->
+	</OverflowToolbar>
+</core:FragmentDefinition>

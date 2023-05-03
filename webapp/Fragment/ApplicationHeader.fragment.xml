@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<OverflowToolbar >
+		<Image src="./Image/Logo.svg" height="2rem" />
+		<VBox>
+			<Label text="{i18n>appTitle} " class="sbuxMarginTop" design="Bold"/>
+			<Label text="{i18n>Store} {ApplicationModel>/StoreNo} - {ApplicationModel>/StoreName}" class="sbuxMarginBottom" design="Bold"/>
+		</VBox>
+		<ToolbarSpacer/>
+		<Button icon="sap-icon://overflow" press="handleUserPopup">
+			<dependents>
+				<core:Fragment fragmentName="sbux.zptt.Fragment.ActionSheet" type="XML" />
+			</dependents>
+		</Button>
+	</OverflowToolbar>
+
+</core:FragmentDefinition>

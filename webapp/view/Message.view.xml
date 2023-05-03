@@ -1,0 +1,36 @@
+<mvc:View controllerName="sbux.zptt.controller.Message"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:main="sap.ui.webc.main"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns="sap.m">
+	<Page showHeader="false" class="sbuxBackgoundGreen">
+		<content>
+			<VBox class="sbuxMargin20" visible="{MessageModel>/BOHFlag}">
+				<HBox>
+					<Text text="{i18n>GreatWork}" class="sbuxMessageText"/>
+				</HBox>
+				<HBox>
+					<Text text="{i18n>BOHComplete}" class="sbuxMessageText"/>
+				</HBox>
+			</VBox>
+			<VBox class="sbuxMargin20" visible="{MessageModel>/FOHFlag}">
+				<HBox>
+					<Text text="{i18n>GreatWork}" class="sbuxMessageText"/>
+				</HBox>
+				<HBox>
+					<Text text="{i18n>FOHCompleted}" class="sbuxMessageText"/>
+				</HBox>
+			</VBox>
+			<VBox class="sbuxMargin20" visible="{MessageModel>/PullFlag}">
+				<HBox>
+					<Text text="{i18n>PullCompleted}" class="sbuxMessageText"/>
+				</HBox>
+				<HBox>
+					<Text text="{i18n>GreatWork}" class="sbuxMessageText"/>
+				</HBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

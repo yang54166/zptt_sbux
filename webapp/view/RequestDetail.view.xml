@@ -1,0 +1,48 @@
+<mvc:View controllerName="sbux.zptt.controller.RequestDetail"
+  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns:main="sap.ui.webc.main"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.f"
+  xmlns="sap.m">
+  <Page showHeader="false">
+    <content>
+      <ObjectHeader title="{ProductItem>/Name}" number="{ProductItem>/Pull}">
+      </ObjectHeader>
+      <IconTabHeader mode="Inline">
+        <items>
+          <IconTabFilter key="BoH" text="{i18n>BackOfHouse}" count="{ProductItem>/BoH}">
+          </IconTabFilter>
+          <IconTabFilter key="FoH" text="{i18n>FrontOfHouse}" count="{ProductItem>/FoH}">
+          </IconTabFilter>
+        </items>
+      </IconTabHeader>
+      <VBox class="sapUiMediumMargin">
+        <HBox>
+          <Button text="-" class="sbuxCalButton sapUiTinyMargin"/>
+          <Input value="0" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="+" class="sbuxCalButton sapUiTinyMargin"/>
+        </HBox>
+        <HBox>
+          <Button text="1" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="2" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="3" class="sbuxCalButton sapUiTinyMargin"/>
+        </HBox>
+        <HBox>
+          <Button text="4" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="5" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="6" class="sbuxCalButton sapUiTinyMargin"/>
+        </HBox>
+        <HBox>
+          <Button text="7" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="8" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="9" class="sbuxCalButton sapUiTinyMargin"/>
+        </HBox>
+        <HBox>
+          <Button text=" " class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text="0" class="sbuxCalButton sapUiTinyMargin"/>
+          <Button text=" " icon="./Image/Delete.png" class="sbuxCalButton sapUiTinyMargin"/>
+        </HBox>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

@@ -1,0 +1,84 @@
+<mvc:View controllerName="sbux.zptt.controller.RequestList"
+  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.f"
+  xmlns:l="sap.ui.layout"
+  xmlns="sap.m">
+  <Page showHeader="false">
+    <subHeader>
+      <core:Fragment fragmentName="sbux.zptt.Fragment.RequestHeader" type="XML"/>
+    </subHeader>
+    <content>
+      <List id="idHideList" items="{/Headers}" visible="false">
+        <CustomListItem class="sapUiTinyMargin sbuxListItemborder" width="40rem">
+          <Text text="{HeaderID}"/>
+        </CustomListItem>
+      </List>
+
+      <l:ResponsiveSplitter >
+        <l:PaneContainer >
+          <l:SplitPane requiredParentWidth="500">
+            <l:layoutData>
+              <l:SplitterLayoutData/>
+            </l:layoutData>
+            <Panel height="100%" class="sbuxListBackground">
+              <core:Fragment fragmentName="sbux.zptt.Fragment.RequestList" type="XML"/>
+            </Panel>
+          </l:SplitPane>
+          <l:PaneContainer >
+            <l:SplitPane requiredParentWidth="500">
+              <l:layoutData>
+                <l:SplitterLayoutData/>
+              </l:layoutData>
+              <Panel height="100%">
+                <VBox class="sbuxNoDataVBox" id="idVboxNoData">
+                  <core:Fragment fragmentName="sbux.zptt.Fragment.RequestNoData" type="XML" />
+                </VBox>
+                <VBox id="idVboxRequestDetails">
+                  <core:Fragment fragmentName="sbux.zptt.Fragment.RequestDetails" type="XML" />
+                </VBox>
+                <!-- background: #d8d8d8; -->
+                <!-- <core:Fragment fragmentName="sbux.zptt.Fragment.RequestDetails" type="XML" /> -->
+              </Panel>
+            </l:SplitPane>
+          </l:PaneContainer>
+        </l:PaneContainer>
+      </l:ResponsiveSplitter>
+    </content>
+    <footer>
+      <Toolbar>
+        <!-- <Button text="Nave To Message" press="onPressNav"/> -->
+        <!-- <HBox class="sbuxMarginLeft10" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}"> -->
+         <HBox visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}">
+       
+          <Image height="2rem" src="./Image/BoH.svg" />
+          <Text text="{i18n>BackOfHouse}"/>
+        </HBox>
+        <ProgressIndicator class="sapUiSmallMargin sbuxProgressIndicator" percentValue="{parts:[{path: 'TileSelectedTile>/CompletedBOH'},{path: 'TileSelectedTile>/TotalCount'}],formatter: '.formatter.getCompletedTask'}" displayValue="{TileSelectedTile>/CompletedBOH}/{TileSelectedTile>/TotalCount}" showValue="true" state="Success" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}"/>
+        <Button text="BoH Done" class="sbuxButtonAccept" type="Accept" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}" press="handleBOHDone"/>
+        <HBox  visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleFoH'}">
+          <Image height="2rem" src="./Image/FoH.svg" />
+          <Text text="{i18n>FrontOfHouse}"/>
+        </HBox>
+        <ProgressIndicator class="sapUiSmallMargin sbuxProgressIndicator" percentValue="{parts:[{path: 'TileSelectedTile>/CompletedFOH'},{path: 'TileSelectedTile>/TotalCount'}],formatter: '.formatter.getCompletedTask'}" displayValue="{TileSelectedTile>/CompletedFOH}/{TileSelectedTile>/TotalCount}" showValue="true" state="Success" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleFoH'}"/>
+        <Button text="FoH Done" class="sbuxButtonAccept" type="Accept" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleFoH'}" press="handleFOHDone"/>
+        <HBox class="" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisiblePull'}">
+          <Image height="2rem" src="./Image/Pull.svg" />
+          <Text text="{i18n>Pull}"/>
+        </HBox>
+        <ProgressIndicator class="sapUiSmallMargin sbuxProgressIndicator" percentValue="{parts:[{path: 'TileSelectedTile>/ActualPullQty'},{path: 'TileSelectedTile>/TotalCount'}],formatter: '.formatter.getCompletedTask'}" displayValue="{TileSelectedTile>/ActualPullQty}/{TileSelectedTile>/TotalCount}" showValue="true" state="Success" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisiblePull'}"/>
+        <Button text="Complete Pull" class="sbuxButtonAccept " type="Accept" visible="{parts:[{path: 'TileSelectedTile>/ActualPullQty'},{path: 'TileSelectedTile>/TotalCount'}],formatter: '.formatter.getCompletePullButton'}" press="handleCompletePull"/>
+
+        <!-- <HBox class="sbuxMarginLeft10" visible="{parts:[{path: 'BOHQty'},{path: 'FOHQty'}],formatter: '.formatter.getHBoxVisibleFoH'}">
+          <Image height="2rem" src="./Image/FoH.svg" />
+          <Text text="{i18n>FrontOfHouse}"/>
+        </HBox>
+         <HBox class="sbuxMarginLeft10" visible="{parts:[{path: 'BOHQty'},{path: 'FOHQty'}],formatter: '.formatter.getHBoxVisiblePull'}">
+          <Image height="2rem" src="./Image/Pull.svg" />
+          <Text text="{i18n>Pull}"/>
+        </HBox> -->
+        <!-- <Button text="FoH Done" class="sbuxButtonAccept sbuxMarginRight10" type="Accept" visible="{parts:[{path: 'BOHQty'},{path: 'FOHQty'}],formatter: '.formatter.getHBoxVisibleFoH'}"/> -->
+      </Toolbar>
+    </footer>
+  </Page>
+</mvc:View>

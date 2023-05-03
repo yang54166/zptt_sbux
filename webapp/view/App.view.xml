@@ -1,0 +1,8 @@
+<mvc:View controllerName="sbux.zptt.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+      xmlns:f="sap.f"
+    xmlns="sap.m">
+    <App id="app">
+    <f:FlexibleColumnLayout id="idLayout" class="sbuxFlexBox"	layout="{ApplicationModel>/layout}">
+  </f:FlexibleColumnLayout></App>
+</mvc:View>

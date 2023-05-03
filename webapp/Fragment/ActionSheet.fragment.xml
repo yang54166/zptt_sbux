@@ -1,0 +1,9 @@
+<ActionSheet id="actionSheet"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" title="Choose Your Action" showCancelButton="true" placement="Bottom">
+	<Button class="sbuxNoBoaderButton" text="Refesh" press="onPressRefresh" />
+	<Button class="sbuxNoBoaderButton" text="Change Store" press="onPressChangeStore" />
+	<Button class="sbuxNoBoaderButton sbuxButtonBoarder" text="Select Language" press="onPressChangeStore" />
+		<Button class="sbuxNoBoaderButton sbuxButtonRedText" text="Reset App" press="onPressRefresh" />
+	<Button class="sbuxNoBoaderButton" text="Logout" press="onPressRefresh" />
+</ActionSheet>

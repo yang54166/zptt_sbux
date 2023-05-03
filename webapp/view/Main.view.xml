@@ -1,0 +1,82 @@
+<mvc:View controllerName="sbux.zptt.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+  xmlns="sap.m">
+  <Page showHeader="false">
+    <subHeader>
+      <core:Fragment fragmentName="sbux.zptt.Fragment.ApplicationHeader" type="XML"/>
+    </subHeader>
+    <content>
+      <VBox class="sbuxListPadding">
+        <Text text="Pulls for {path: 'TileModel>/TodayDate',formatter: '.formatter.getPullDay'}" class="sbuxTextList"/>
+        <List items="{TileModel>/RequestList}">
+          <CustomListItem class="sapUiTinyMargin sbuxListItemborder" width="40rem">
+            <HBox>
+              <!-- <Image height="2rem" src="{path: 'TileModel>PullRequest',formatter: '.formatter.getRequestSrc'}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" /> -->
+              <Image height="2rem" src="{TileModel>Src}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+              <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" width="100%">
+                <Text text="{path: 'TileModel>PullRequest',formatter: '.formatter.getRequestName'}" class="sbuxTextBold"/>
+                <HBox class="sapUiTinyMarginTop" alignItems="Start" justifyContent="SpaceBetween">
+                  <ObjectStatus text="{path: 'TileModel>started',formatter: '.formatter.getStatusText'}" state="{path: 'TileModel>started',formatter: '.formatter.getStatus'}" class="sbuxTextBold"/>
+                  <Button text="{path: 'TileModel>started',formatter: '.formatter.getButtonText'}" type="Accept" class="sbuxButtonAccept sapUiMediumMarginEnd" press="onPressStart" />
+                </HBox>
+              </VBox>
+            </HBox>
+          </CustomListItem>
+        </List>
+      </VBox>
+      <VBox class="sbuxListLeftRightPadding">
+        <Text text="{i18n>EmergencyPull}" class="sbuxTextList"/>
+        <List items="{TileModel>/EmergencyList}">
+          <CustomListItem class="sapUiTinyMargin sbuxListItemborder" width="40rem">
+            <HBox>
+              <Image height="2rem" src="{TileModel>Src}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+              <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" width="100%">
+                <Text text="{path: 'TileModel>PullRequest',formatter: '.formatter.getRequestName'}" class="sbuxTextBold"/>
+                <HBox class="sapUiTinyMarginTop" alignItems="Start" justifyContent="SpaceBetween">
+                  <ObjectStatus text="{path: 'TileModel>started',formatter: '.formatter.getStatusEmergencyText'}" state="None" class=""/>
+                  <Button text="{i18n>Start}" type="Accept" class="sbuxButtonAccept sapUiMediumMarginEnd" press="onPressStart" />
+                </HBox>
+              </VBox>
+              <!-- <Button text="{i18n>Start}" type="Accept" class="sbuxButtomMargin sbuxButtonAccept" press="onPressStart" /> -->
+            </HBox>
+          </CustomListItem>
+        </List>
+      </VBox>
+      <VBox class="sbuxListLeftRightPadding">
+        <Text text="{i18n>CompletedPulls}" class="sbuxTextList" />
+        <List class="sbuxListNoData" items="{TileModel>/CompletedPull}" noDataText="{i18n>NoCompletedPulls}">
+          <CustomListItem class="sapUiTinyMargin sbuxListItemborder" width="40rem">
+            <HBox>
+              <!-- <Image height="2rem" src="{path: 'TileModel>PullRequest',formatter: '.formatter.getRequestSrc'}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" /> -->
+              <Image height="2rem" src="./Image/Checked.svg" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+              <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" width="100%">
+                <Text text="{path: 'TileModel>PullRequest',formatter: '.formatter.getRequestName'}" class="sbuxTextBold"/>
+                <HBox class="sapUiTinyMarginTop" alignItems="Start" justifyContent="SpaceBetween">
+                  <ObjectStatus text="Completed at {path: 'TileModel>/TodayDate',formatter: '.formatter.getPullDay'}" 	state="Success" class="sbuxTextBold"/>
+                  <!-- <Button text="{path: 'TileModel>started',formatter: '.formatter.getButtonText'}" type="Accept" class="sbuxButtonAccept sapUiMediumMarginEnd" press="onPressStart" /> -->
+                </HBox>
+              </VBox>
+            </HBox>
+          </CustomListItem>
+        </List>
+         <!-- <List class="sbuxListNoData" id="idDummyList" items="{/Headers}" noDataText="{i18n>NoCompletedPulls}">
+          <CustomListItem class="sapUiTinyMargin sbuxListItemborder" width="40rem">
+            <HBox>
+              <Image height="2rem" src="./Image/Checked.svg" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+              <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" width="100%">
+                <Text text="{path: 'TileModel>PullRequest',formatter: '.formatter.getRequestName'}" class="sbuxTextBold"/>
+                <HBox class="sapUiTinyMarginTop" alignItems="Start" justifyContent="SpaceBetween">
+                  <ObjectStatus text="Completed at {path: 'TileModel>/TodayDate',formatter: '.formatter.getPullDay'}" 	state="Success" class="sbuxTextBold"/>
+                </HBox>
+              </VBox>
+            </HBox>
+          </CustomListItem>
+        </List> -->
+      </VBox>
+    </content>
+
+  </Page>
+</mvc:View>

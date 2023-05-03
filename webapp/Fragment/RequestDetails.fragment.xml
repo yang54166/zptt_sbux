@@ -1,0 +1,145 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <ObjectHeader class="sbuxObjectHeader" title="{ProductItem>/Description}" number="{parts:[{path:'ProductItem>/BOHQty',targetType : 'any'},{path:'ProductItem>/FOHQty',targetType : 'any'},{path:'ProductItem>/Carryover',targetType : 'any'}],formatter: '.formatter.getCarryOverQnt'}" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getIconVisibility'}">
+  </ObjectHeader>
+  <IconTabHeader mode="Inline" selectedKey="{parts:[{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'}],formatter:'.formatter.getSelectedKey'}" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getIconVisibility'}" class="sbuxSeletedIcon">
+    <items>
+      <IconTabFilter enabled="false" key="BoH" text="{i18n>BackOfHouse}" count="{ProductItem>/BOHQty}">
+      </IconTabFilter>
+      <IconTabFilter enabled="false" key="FoH" text="{i18n>FrontOfHouse}" count="{ProductItem>/FOHQty}">
+      </IconTabFilter>
+    </items>
+  </IconTabHeader>
+  <ObjectHeader title="{ProductItem>/Description}" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisiblePull'}">
+  </ObjectHeader>
+
+  <HBox class="sapUiTinyMarginBegin sapUiTinyMarginTop sbuxDetailPageHbox" alignItems="Start" justifyContent="SpaceBetween" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisiblePull'}">
+    <VBox class="sapUiSmallMargin">
+      <Text text="I need" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+      <Text text="{ForeCastModel>/Quantity}" class="sapUiTinyMarginTop sapUiTinyMarginBegin" />
+    </VBox>
+    <VBox class="sapUiSmallMargin">
+      <Text text="Carryover" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+      <Text text="{parts:[{path:'ProductItem>/BOHQty',targetType : 'any'},{path:'ProductItem>/FOHQty',targetType : 'any'},{path:'ProductItem>/Carryover',targetType : 'any'}],formatter: '.formatter.getCarryOverQnt'}" class="sapUiTinyMarginTop sapUiTinyMarginBegin" />
+    </VBox>
+
+  </HBox>
+  <Table class="sapUiLargeMarginTop" id="idKeyPadTable">
+    <columns>
+      <Column >
+      </Column>
+      <Column >
+      </Column>
+      <Column >
+      </Column>
+    </columns>
+    <items>
+
+      <ColumnListItem class="sbuxNoBoarder">
+        <cells>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center">
+            <Image src="./Image/Minus.svg" width="4rem" />
+          </HBox>
+          <HBox >
+            <!-- <Input width="10rem"  value="{parts:[{path:'ProductItem>/BOHQty',targetType : 'any'}],formatter: '.formatter.getQltOrDash'}" class="sbuxCalInput sapUiTinyMargin"  change="handleChangeBOH" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}"/> -->
+            <Input id="idBoHInput" value="{ProductItem>/BOHQty}"  class="sbuxCalInput  " type="Number" change="handleChangeBOH" liveChange="handLiveChangeInput" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}"/>
+            <Input id="idFoHInput" value="{ProductItem>/FOHQty}" class="sbuxCalInput  " type="Number" change="handleChangeFOH" liveChange="handLiveChangeInput" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleFoH'}"/>
+            <Input id="idPullInput"  class="sbuxCalInput  "  liveChange="handLiveChangeInput" value="{parts:[{path:'ProductItem>/ClacPull',targetType : 'any'},{path:'ProductItem>/Carryover',targetType : 'any'},{path:'ProductItem>/ActualPullQty',targetType : 'any'},{path:'ProductItem>/ItemNo',targetType : 'any'}],formatter: '.formatter.getPullQty'}" type="Number" change="handleChangeCarryOver" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisiblePull'}"/>
+
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center">
+            <Image src="./Image/Plus.svg" width="4rem" />
+          </HBox>
+        </cells>
+      </ColumnListItem>
+      <ColumnListItem class="sbuxNoTopBoarder">
+        <cells>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="1" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="2" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center">
+            <Text text="3" class="sbuxTextNumber"/>
+          </HBox>
+        </cells>
+      </ColumnListItem>
+      <ColumnListItem>
+        <cells>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="4" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="5" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center">
+            <Text text="6" class="sbuxTextNumber"/>
+          </HBox>
+        </cells>
+      </ColumnListItem>
+      <ColumnListItem >
+        <cells>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="7" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="8" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center">
+            <Text text="9" class="sbuxTextNumber"/>
+          </HBox>
+        </cells>
+      </ColumnListItem>
+      <ColumnListItem class="sbuxGrayBackground">
+        <cells>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center" class="sbuxBoard">
+            <Text text="0" class="sbuxTextNumber"/>
+          </HBox>
+          <HBox height="5rem" alignItems="Start" justifyContent="Center">
+            <Image src="./Image/Remove.svg" width="4rem" />
+          </HBox>
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+
+
+
+
+
+  <!-- <VBox class="sapUiMediumMargin">
+    <HBox>
+      <Button text="-" class="sbuxCalButton sapUiTinyMargin" press="onPressMinus"/>
+      <Input value="{ProductItem>/BOHQty}" class="sbuxCalButton sapUiTinyMargin" type="Number" change="handleChangeBOH" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleBoH'}"/>
+      <Input value="{ProductItem>/FOHQty}" class="sbuxCalButton sapUiTinyMargin" type="Number" change="handleChangeFOH" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisibleFoH'}"/>
+      <Input id="idPullInput" value="{parts:[{path:'ProductItem>/ClacPull',targetType : 'any'},{path:'ProductItem>/Carryover',targetType : 'any'},{path:'ProductItem>/ActualPullQty',targetType : 'any'},{path:'ProductItem>/ItemNo',targetType : 'any'}],formatter: '.formatter.getPullQty'}" class="sbuxCalButton sapUiTinyMargin" type="Number" change="handleChangeCarryOver" visible="{parts:[{path: 'TileSelectedTile>/PullRequest'},{path: 'TileSelectedTile>/FOHFlag18'},{path: 'TileSelectedTile>/FOHFlag3'},{path: 'TileSelectedTile>/BOHFlag18'},{path: 'TileSelectedTile>/BOHFlag3'}],formatter: '.formatter.getHBoxVisiblePull'}"/>
+
+      <Button text="+" class="sbuxCalButton sapUiTinyMargin" press="onPressPlus"/>
+    </HBox>
+    <HBox>
+      <Button text="1" class="sbuxCalButton sapUiTinyMargin" press="onPressNumber"/>
+      <Button text="2" class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text="3" class="sbuxCalButton sapUiTinyMargin"/>
+    </HBox>
+    <HBox>
+      <Button text="4" class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text="5" class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text="6" class="sbuxCalButton sapUiTinyMargin"/>
+    </HBox>
+    <HBox>
+      <Button text="7" class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text="8" class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text="9" class="sbuxCalButton sapUiTinyMargin"/>
+    </HBox>
+    <HBox>
+      <Button text=" " class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text="0" class="sbuxCalButton sapUiTinyMargin"/>
+      <Button text=" " icon="./Image/Delete.png" class="sbuxCalButton sapUiTinyMargin"/>
+    </HBox>
+  </VBox> -->
+
+</core:FragmentDefinition>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <HBox class="sapUiTinyMargin">
+    <Image src="./Image/Right.svg"/>
+    <Text text="{i18n>Searchforitems}" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+  </HBox>
+  <HBox class="sapUiTinyMargin sapUiMediumMarginTop">
+    <Image src="./Image/Right.svg"/>
+    <Text text="{i18n>Seealistofallitems}" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+  </HBox>
+  <HBox class="sapUiTinyMargin sapUiMediumMarginTop">
+    <Image src="./Image/Right.svg"/>
+    <Text text="{i18n>NoDataCat}" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+  </HBox>
+  <VBox class="sBuxNoDataVBoxMargin">
+    <Image src="./Image/NoData.svg" height="8rem" width="8rem"/>
+    <Text text="{i18n>NoDataWelcome}" class="sbuxTextBold"/>
+    <Text text="{i18n>NoDataCount1}" class="sapUiTinyMarginTop"/>
+    <Text text="{i18n>NoDataCount2}"/>    
+    <Text text="{i18n>NoDataCount3}"/>
+  </VBox>
+  <HBox class="sapUiTinyMargin sbuxNoDataHboxBottom">
+    <Image src="./Image/Right.svg" class="sbuxRotateImage"/>
+    <Text text="{i18n>NoDataProgress}" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+  </HBox>
+</core:FragmentDefinition>

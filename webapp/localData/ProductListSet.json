@@ -1,0 +1,58 @@
+{
+	"ProductList": [{
+		"Type":"Savories",
+		"ProductId":"100001",
+		"src":"./Image/HamCheese.png",
+		"Name":"HAM AND CHEESE CROISSANT",
+		"BoH":"",
+		"FoH":"",
+		"Pull":"",
+		"Status":""
+	},{
+		"Type":"Warning",
+		"ProductId":"100002",
+		"src":"./Image/Bacon.png",
+		"Name":"BACON & EGG BITES",
+		"BoH":"1",
+		"FoH":"1",
+		"Pull":"3",
+		"Status":true
+	},{
+		"Type":"Warning",
+		"ProductId":"100003",
+		"src":"./Image/Bacon.png",
+		"Name":"BACON,GOUDA & EGG SANDWICH",
+		"BoH":"",
+		"FoH":"",
+		"Pull":"",
+		"Status":true
+	},{
+		"Type":"Warning",
+		"ProductId":"100001",
+		"src":"./Image/Bacon.png",
+		"Name":"HAM AND CHEESE CROISSANT",
+		"BoH":"",
+		"FoH":"",
+		"Pull":"",
+		"Status":""
+	},{
+		"Type":"Warning",
+		"ProductId":"100001",
+		"src":"./Image/Bacon.png",
+		"Name":"HAM AND CHEESE CROISSANT",
+		"BoH":"",
+		"FoH":"",
+		"Pull":"",
+		"Status":""
+	},
+	{
+		"Type":"Warning",
+		"ProductId":"100001",
+		"src":"./Image/Bacon.png",
+		"Name":"HAM AND CHEESE CROISSANT",
+		"BoH":"",
+		"FoH":"",
+		"Pull":"",
+		"Status":""
+	}]
+}

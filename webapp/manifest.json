@@ -1,0 +1,202 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "sbux.zptt",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.1.2"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.9.2",
+            "toolsId": "b7368439-8585-4109-ab12-90c3aaf6ab6f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/catalog/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            },
+            "mainV2Service": {
+                "uri": "/v2/catalog/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.112.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sbux.zptt.i18n.i18n"
+                }
+            },
+            "Main": {
+                "dataSource": "mainV2Service",
+                "preload": true
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "sbux.zptt.view",
+                "controlAggregation": "pages",
+                "controlId": "idLayout",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteApp",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetApp"
+                    ]
+                },
+                {
+                    "name": "Main",
+                    "pattern": "Main",
+                    "target": [
+                        "Main"
+                    ]
+                },
+                {
+                    "name": "RequestList",
+                    "pattern": "RequestList/{ObjectId}",
+                    "target": [
+                        "RequestList"
+                    ]
+                },
+                {
+                    "name": "RequestDetail",
+                    "pattern": "RequestDetail/{ObjectId1}",
+                    "target": [
+                        "RequestDetail"
+                    ]
+                },
+                {
+                    "name": "MessageDisplay",
+                    "pattern": "RequestList/{ObjectId}/MessageDisplay",
+                    "target": [
+                        "MessageDisplay"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "beginColumnPages",
+                    "level": 1,
+                    "viewName": "Main",
+                    "id": "MainView"
+                },
+                "Main": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "beginColumnPages",
+                    "level": 1,
+                    "viewName": "Main",
+                    "id": "MainView"
+                },
+                "RequestList": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "beginColumnPages",
+                    "level": 1,
+                    "viewName": "RequestList",
+                    "id": "RequestListView"
+                },
+                "RequestDetail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "midColumnPages",
+                    "level": 2,
+                    "viewName": "RequestDetail",
+                    "id": "RequestDetailView"
+                },
+                "MessageDisplay": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "beginColumnPages",
+                    "level": 3,
+                    "viewName": "Message",
+                    "id": "MessageView"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "sbux.zptt.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "AppView"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "sbuxzptt"
+    }
+}

@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog noDataText="No Store Found" title="Change Store" search=".onSearch" searchPlaceholder="Search Store" confirm=".onValueHelpDialogClose" cancel=".onValueHelpDialogClose" showClearButton="true" items="{
+			path: 'StoreModel>/StoreList',
+			sorter: {
+				path: 'HeaderID',
+				descending: false
+			}
+		}">
+		<StandardListItem  title="{path:'StoreModel>StoreNo',targetType : 'any'}" description="{StoreModel>StoreDescription}" wrapping="true" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>
